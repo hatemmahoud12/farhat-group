@@ -128,7 +128,7 @@ align-items:center;
 /** hero section **/
 
 #hero{
-    background-image: url(images/back.jpg);
+    background-image: url(back.jpg);
     background-position: center;
     background-size: cover;
     height: 90.2vh;
