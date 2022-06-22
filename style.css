@@ -1,9 +1,12 @@
+/** main code **/
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: cairo;
+        box-sizing: border-box;
+
     scroll-behavior: smooth;
+    text-decoration: none;
 }
 h1{
     font-size: 50px;
@@ -33,9 +36,13 @@ p{
 body{
     width: 100%;
 }
+::-webkit-scrollbar{
+    width: 0;
+}
 /** some transitions **/
 
 /** fade transition **/
+
 @keyframes fade{
     0%{
         opacity: 0;
@@ -64,24 +71,23 @@ body{
 }
 
 
-/** move transition **/
 @keyframes move{
     from{
-        transform: scale(1.1);
+        transform: scale(0.7);
     }
     to{
         transform: scale(1);
     }
 }
-
 /**header**/
 #header{
       display: flex;/**لو عايز تخليهم في النص امسح اول ستر  وي حط ال/ img جوا الnav **/
 align-items:center;
     justify-content: space-between;
     padding: 20px 80px;
+    width: 100%;
     background: #F5F5F5;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
     z-index: 999;
     position: sticky;
     top: 0;
@@ -89,13 +95,13 @@ align-items:center;
 }
 .logo{
     width: 50px;
-    animation: move 1s linear;
+    animation: move 0.5s linear;
 }
 #nav-bar{
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: move 1s linear;
+    animation: move 0.5s linear;
 }
 #nav-bar i{
     font-size: 20px;
@@ -114,6 +120,7 @@ align-items:center;
 }
 #nav-bar li a:hover,#nav-bar li a.active{
     color: #1363DF;
+
 }
 
 #nav-bar li a.active::after,#nav-bar li a:hover::after{
@@ -123,25 +130,32 @@ align-items:center;
     background: #1363DF;
     position: absolute;
     bottom: -4px;
-    left: 20px;
+    right: 20px;
+}
+#mobile{
+    display: none;
+    align-items: center;
 }
 /** hero section **/
 
 #hero{
-    background-image: url(back.jpg);
+    background-image: url(images/back.jpg);
     background-position: center;
     background-size: cover;
     height: 90.2vh;
     width: 100%;
     padding: 0 80px;
     display: flex;
+    background-attachment: fixed;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
 }
 #hero h4{
+    color: white;
     padding-bottom: 15px;
-    animation: fade 1s linear;
+    animation: fade 3s linear;
+
 }
 #hero h1{
     color: #1363DF;    
@@ -153,9 +167,10 @@ align-items:center;
 
 }
 #hero p{
+    color: white;
     animation: fade 1s linear;
 }
-#hero button{
+#hero a{
     animation: fade  1s linear;
     background-color: #1363DF;/**#088178*/
     color: white;
@@ -167,14 +182,14 @@ align-items:center;
     padding-top:15px;
     padding-bottom:15px;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 10px;
     border: #1363DF solid 3px;
     transition: 1s ease-in-out;
     cursor: pointer;
 }
-#hero button:hover{
+#hero a:hover{
     background-color: transparent;
-    color: #1363DF;
+    color: white;
 }
 
 /** fauture **/
@@ -183,15 +198,21 @@ align-items:center;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    animation: move 0.7s linear;
+    transition: ease;
 }
 #fauture .fe-box{
     width:180px;
     text-align: center;
     padding: 25px 15px;
-    box-shadow: 20px 20px 34px rgba(0,0,0,0.03);
-    border:1px solid #f5f5f5;
+    box-shadow: 20px 20px 34px rgba(0,0,0,0.08);
+    border:5px solid #f5f5f5;
     border-radius: 5px;
     margin: 15px 0;
+    transition: 1s ease;
+}
+#fauture .fe-box:hover{
+    transform: scale(1.1);
 }
 #fauture .fe-box img{
     width:100%;
@@ -215,12 +236,14 @@ align-items:center;
     background-color: #06283D;
 }
 #product1 .pro-container {
-display: flex;
+display:flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    animation: fade 1.5s linear;
 }
 #product1 h2{
+    padding-bottom: 30px;
     color: #47B5FF;
     text-align: left;
 }
@@ -239,10 +262,6 @@ display: flex;
     box-shadow: 20px 20px 34px rgba(255,255,255,0.3);
     margin: 15px 0;
     transition: 0.2s ease;
-    position: relative;
-}
-#product1 .pro :hover{
-    /**transform: scale(1.1);**/
 }
 #product1 .pro img{
     width: 100%;
@@ -271,20 +290,7 @@ display: flex;
     font-weight: 700;
     color:#1363DF;
 }
-#product1 .pro .cart{
-    text-align: center;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 50px;
-    background-color: #DFF6FF;
-    font-weight: 500;
-    color: #1363DF;
-    border: 1px solid #DFF6FF;
-    position: absolute;
-    bottom: 20px;
-    right:10px;
-}
+
 /** footer **/
 footer{
     display: flex;
@@ -296,31 +302,107 @@ footer col{
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+        animation:  fade 2s linear;
+
 }
 footer .logo{
      margin-bottom: 30px;
+    animation:  move 10s linear;
 }
 footer h4{
-    font-size: 14px;
+    font-size: 18px;
     padding-bottom: 20px;
+        animation:  fade 2s linear;
+
 }
 footer p{
-    font-size: 13px;
+    font-size: 15px;
     margin: 0 0 8px 0;
+    color:#6D8299;
+        animation:  fade 2s linear;
+
 }
 footer .follow{
     margin-top: 20px;
+    animation:  fade 2s linear;
 }
 footer .follow i{
     color:#1363DF;
+    font-size: 30px;
+        animation:  fade 2s linear;
+
 }
 footer .col-payment img{
+    animation:  fade 5s linear;
     margin:10px 0 15px 0;
 }
 
 /** responsive **/
 @media (max-width:799px){
-   /**nav bar**/
+    section
+    #nav-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        height: 100vh;
+        width: 300px;
+        background-color: white;
+        box-shadow: 0 40px 60px rgba(0,0,0,0.1);
+        padding: 80px 0 0 10px;
+        transition: 0.3s;
+}
+    #nav-bar.active{
+        right: 0;
+    }
+    #nav-bar li{
+        margin-bottom: 25px;
+    }
+    #mobile{
+    display: flex;
+    align-items: center;
+}
+    #mobile i{
+        color:#1363DF;
+        font-size: 20px;
+        padding-left: 20px;
+    }
+    #close{
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: black;
+        font-size: 24px;
+    }
+    #hero{
+        height: 70vh;
+        padding: 0 80px;
+        background-position: top 30% right 20%;
+    }
+    .section-p1{
+        padding: 40px 40px;
+    }
+    #feature{
+        justify-content: center;
+        
+    }
+    #feature .fe-box{
+        margin: 15px 15px;
+    }
+    #product1 .pro-container{
+        justify-content: center;
+    }
+    #product1 .pro{
+        margin: 15px;
+    }
+}
+@media (max-width: 477px){
+    .section-p1{
+        padding: 20px 20px;
+    }
     #header{
         padding: 10px 30px;
     }
@@ -332,16 +414,12 @@ footer .col-payment img{
     }
     #hero{
         padding: 0 20px;
-        background-position: 50%;
+        background-position: 55%;
     }
-    .section-p1{
-    padding: 30px 40px;
-}
     #feature{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        
     }
     #feature .fe-box{
         width: 155px;
